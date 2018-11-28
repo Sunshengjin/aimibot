@@ -1,0 +1,17 @@
+<launch>
+   <!--  smooths inputs from cmd_vel_mux/input/teleop_raw to cmd_vel_mux/input/teleop -->
+   <include file="$(find turtlebot_teleop)/launch/includes/velocity_smoother.launch.xml"/>
+
+   <node pkg="turtlebot_teleop" type="turtlebot_teleop_joy" name="turtlebot_teleop_joystick">
+    <param name="scale_angular" value="1.5"/>
+    <param name="scale_linear" value="0.5"/>
+    <remap from="turtlebot_teleop_joystick/cmd_vel" to="teleop_velocity_smoother/raw_cmd_vel"/>
+   </node>
+
+  <node pkg="joy" type="joy_node" name="joystick"/>
+  <node pkg="aimijia" type="aimijia" name="aimijia" output="screen">
+    <param name="serial_port" value="/dev/ttyUSB0"/>
+    <remap from="/aimijia/commands/velocity" to="/teleop_velocity_smoother/raw_cmd_vel"/>
+  </node>
+  <node pkg="rqt_plot" type="rqt_plot" name="rqt_plot"/>
+</launch>
