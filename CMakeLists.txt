@@ -232,6 +232,6 @@ include_directories(
 # catkin_add_nosetests(test)
 add_executable(aimijia src/main.cpp src/message_callback.cpp src/diff_driver.cpp src/odometry.cpp)
 target_link_libraries(aimijia ${catkin_LIBRARIES})
-
+add_dependencies(aimijia aimijia_gencpp)
 add_executable(qua src/qua.cpp )
 target_link_libraries(qua ${catkin_LIBRARIES})
