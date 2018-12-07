@@ -13,5 +13,4 @@
     <param name="serial_port" value="/dev/ttyUSB0"/>
     <remap from="/aimijia/commands/velocity" to="/teleop_velocity_smoother/raw_cmd_vel"/>
   </node>
-  <node pkg="rqt_plot" type="rqt_plot" name="rqt_plot"/>
 </launch>

@@ -1,0 +1,10 @@
+<launch>
+  <node pkg="aimijia" type="aimijia" name="aimijia" output="screen">
+    <param name="serial_port" value="/dev/ttyUSB0"/>
+    <remap from="/aimijia/commands/velocity" to="/mobile_base/commands/velocity"/>
+  </node>
+  
+  <node pkg="move_demo" type="move_demo" name="move_demo"  output="screen">
+    <remap from="/mobile_base/commands/velocity" to="/aimijia/commands/velocity"/>
+  </node>
+</launch>
