@@ -1,0 +1,7 @@
+<launch>
+
+  <node pkg="aimijia" type="aimijia" name="aimijia" output="screen">
+    <param name="serial_port" value="/dev/ttyUSB0"/>
+  </node>
+
+</launch>
