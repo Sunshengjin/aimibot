@@ -1,5 +1,5 @@
-#ifndef __AIMIJIA__H
-#define __AIMIJIA__H
+#ifndef __AIMIBOT__H
+#define __AIMIBOT__H
 
 #include <ros/ros.h> 
 #include "rosconsole/macros_generated.h"
@@ -49,17 +49,17 @@ ros::Subscriber
 		controller_info_command_subscriber;
 
 
-aimijia::Cliff cliff_pubdata;
-aimijia::CoreSensors coresense_pubdata;
-aimijia::hardware hardware_pubdata;
-aimijia::ControllerInfo controlinfo_pubdata;
-aimijia::DockInfraRed dockin_pubdata;
-aimijia::Inertia iner_pubdata;
-aimijia::ThreeAxisGyro threeag_pubdata;
-aimijia::UniqueDeviceID uniid_pubdata;
-aimijia::Current cur_pubdata;
-aimijia::GpInput gpin_pubdata;
-aimijia::Ultrasonic ultrasonic_pubdata;
+aimibot::Cliff cliff_pubdata;
+aimibot::CoreSensors coresense_pubdata;
+aimibot::hardware hardware_pubdata;
+aimibot::ControllerInfo controlinfo_pubdata;
+aimibot::DockInfraRed dockin_pubdata;
+aimibot::Inertia iner_pubdata;
+aimibot::ThreeAxisGyro threeag_pubdata;
+aimibot::UniqueDeviceID uniid_pubdata;
+aimibot::Current cur_pubdata;
+aimibot::GpInput gpin_pubdata;
+aimibot::Ultrasonic ultrasonic_pubdata;
 
 CoreSensors_data coresensors_data;
 ControllerInfo_data controlinfo_data;
@@ -195,15 +195,15 @@ void rostopic_pub(CoreSensors_data coresensors_data_,
 
 void subscribeTopics(ros::NodeHandle& nh)
 {
-  velocity_command_subscriber = nh.subscribe<geometry_msgs::Twist>("/aimijia/commands/velocity", 10, &subscribeVelocityCommand);
-  led1_command_subscriber =  nh.subscribe<aimijia::Led>("/aimijia/commands/led_1", 10, &subscribeLed1Command);
-  led2_command_subscriber =  nh.subscribe<aimijia::Led>("/aimijia/commands/led_2", 10, &subscribeLed2Command);
-  digital_output_command_subscriber =  nh.subscribe<aimijia::DigitalOutput>("/aimijia/commands/digi_output", 10, &subscribeDigitalOutputCommand);
-  external_power_command_subscriber =  nh.subscribe<aimijia::DigitalOutput>("/aimijia/commands/exter_power", 10, &subscribeExternalPowerCommand);
-  sound_command_subscriber =  nh.subscribe<aimijia::Sound>("/aimijia/commands/beep_sound", 10, &subscribeSoundCommand);
-  reset_odometry_subscriber = nh.subscribe<std_msgs::Empty>("/aimijia/commands/reset_odometry", 10, &subscribeResetOdometry);
-  motor_power_subscriber = nh.subscribe<aimijia::MotorPower>("/aimijia/commands/mot_power", 10, &subscribeMotorPower);
-  controller_info_command_subscriber =  nh.subscribe<aimijia::ControllerInfo>("/aimijia/commands/control_info", 10, &subscribeControllerInfoCommand);
+  velocity_command_subscriber = nh.subscribe<geometry_msgs::Twist>("/aimibot/commands/velocity", 10, &subscribeVelocityCommand);
+  led1_command_subscriber =  nh.subscribe<aimibot::Led>("/aimibot/commands/led_1", 10, &subscribeLed1Command);
+  led2_command_subscriber =  nh.subscribe<aimibot::Led>("/aimibot/commands/led_2", 10, &subscribeLed2Command);
+  digital_output_command_subscriber =  nh.subscribe<aimibot::DigitalOutput>("/aimibot/commands/digi_output", 10, &subscribeDigitalOutputCommand);
+  external_power_command_subscriber =  nh.subscribe<aimibot::DigitalOutput>("/aimibot/commands/exter_power", 10, &subscribeExternalPowerCommand);
+  sound_command_subscriber =  nh.subscribe<aimibot::Sound>("/aimibot/commands/beep_sound", 10, &subscribeSoundCommand);
+  reset_odometry_subscriber = nh.subscribe<std_msgs::Empty>("/aimibot/commands/reset_odometry", 10, &subscribeResetOdometry);
+  motor_power_subscriber = nh.subscribe<aimibot::MotorPower>("/aimibot/commands/mot_power", 10, &subscribeMotorPower);
+  controller_info_command_subscriber =  nh.subscribe<aimibot::ControllerInfo>("/aimibot/commands/control_info", 10, &subscribeControllerInfoCommand);
   
 }
 void advertiseTopics(ros::NodeHandle& nh)
@@ -212,17 +212,17 @@ void advertiseTopics(ros::NodeHandle& nh)
  /*********************
   ** AIMIJIA Esoterics
   **********************/
-  cliff_state_publisher = nh.advertise <aimijia::Cliff>("/aimijia/cliff",100);
-  joint_state_publisher = nh.advertise <aimijia::CoreSensors>("/aimijia/CoreSensors",100);
-  version_info_publisher = nh.advertise < aimijia::hardware > ("/aimijia/version_info",  100, true); // latched publisher
-  controller_info_publisher = nh.advertise < aimijia::ControllerInfo > ("/aimijia/controller_info",  100, true); // latched publisher
-  dock_ir_publisher = nh.advertise < aimijia::DockInfraRed > ("/aimijia/sensors/dock_ir", 100);
-  inertia_publisher = nh.advertise < aimijia::Inertia > ("/aimijia/sensors/imu_data", 100);
-  raw_imu_data_publisher = nh.advertise < aimijia::ThreeAxisGyro > ("/aimijia/sensors/imu_data_raw", 100);
-  unique_id_publisher = nh.advertise< aimijia::UniqueDeviceID > ("/aimijia/unique_id", 100);
-  current_publisher = nh.advertise< aimijia::Current > ("/aimijia/current", 100);
-  gpinput_publisher = nh.advertise< aimijia::GpInput > ("/aimijia/GpInput", 100);
-  ultrasonic_data_publisher = nh.advertise< aimijia::Ultrasonic > ("/aimijia/Ultrasonic", 100);
+  cliff_state_publisher = nh.advertise <aimibot::Cliff>("/aimibot/cliff",100);
+  joint_state_publisher = nh.advertise <aimibot::CoreSensors>("/aimibot/CoreSensors",100);
+  version_info_publisher = nh.advertise < aimibot::hardware > ("/aimibot/version_info",  100, true); // latched publisher
+  controller_info_publisher = nh.advertise < aimibot::ControllerInfo > ("/aimibot/controller_info",  100, true); // latched publisher
+  dock_ir_publisher = nh.advertise < aimibot::DockInfraRed > ("/aimibot/sensors/dock_ir", 100);
+  inertia_publisher = nh.advertise < aimibot::Inertia > ("/aimibot/sensors/imu_data", 100);
+  raw_imu_data_publisher = nh.advertise < aimibot::ThreeAxisGyro > ("/aimibot/sensors/imu_data_raw", 100);
+  unique_id_publisher = nh.advertise< aimibot::UniqueDeviceID > ("/aimibot/unique_id", 100);
+  current_publisher = nh.advertise< aimibot::Current > ("/aimibot/current", 100);
+  gpinput_publisher = nh.advertise< aimibot::GpInput > ("/aimibot/GpInput", 100);
+  ultrasonic_data_publisher = nh.advertise< aimibot::Ultrasonic > ("/aimibot/Ultrasonic", 100);
 //   basecontrol_publisher = ;
 //   sound_publisher = ;
 //   setpower_publisher = ;

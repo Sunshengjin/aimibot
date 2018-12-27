@@ -1,6 +1,6 @@
 #include "iostream"
 #include "ros/ros.h"
-#include "../include/aimijia/message_callback.hpp"
+#include "../include/aimibot/message_callback.hpp"
 #include "serial/serial.h"
 #include "limits.h"
 const double bias=0.23;
@@ -74,7 +74,7 @@ void subscribeVelocityCommand(const geometry_msgs::TwistConstPtr msg)
   memset(buffer_send, 0, 256);
 }
 
-void subscribeLed1Command(const aimijia::LedConstPtr msg)
+void subscribeLed1Command(const aimibot::LedConstPtr msg)
 {
    cs=0;
   if((msg->value==0x01)||(msg->value==0x02))
@@ -93,7 +93,7 @@ void subscribeLed1Command(const aimijia::LedConstPtr msg)
   memset(buffer_send, 0, 256);
 }
 
-void subscribeLed2Command(const aimijia::LedConstPtr msg)
+void subscribeLed2Command(const aimibot::LedConstPtr msg)
 {
    cs=0;
     if((msg->value==0x04)||(msg->value==0x08))
@@ -112,12 +112,12 @@ void subscribeLed2Command(const aimijia::LedConstPtr msg)
   memset(buffer_send, 0, 256);
 }
 
-void subscribeDigitalOutputCommand(const aimijia::DigitalOutputConstPtr msg)
+void subscribeDigitalOutputCommand(const aimibot::DigitalOutputConstPtr msg)
 {
   
 }
 
-void subscribeExternalPowerCommand(const aimijia::DigitalOutputConstPtr msg)
+void subscribeExternalPowerCommand(const aimibot::DigitalOutputConstPtr msg)
 {
   
 }
@@ -127,17 +127,17 @@ void subscribeResetOdometry(const std_msgs::EmptyConstPtr msg)
   
 }
 
-void subscribeSoundCommand(const aimijia::SoundConstPtr msg)
+void subscribeSoundCommand(const aimibot::SoundConstPtr msg)
 {
   
 }
 
-void subscribeMotorPower(const aimijia::MotorPowerConstPtr msg)
+void subscribeMotorPower(const aimibot::MotorPowerConstPtr msg)
 {
   
 }
 
-void subscribeControllerInfoCommand(const aimijia::ControllerInfoConstPtr msg)
+void subscribeControllerInfoCommand(const aimibot::ControllerInfoConstPtr msg)
 {
   
 }

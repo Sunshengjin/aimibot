@@ -16,14 +16,14 @@ struct command_id
   uint8_t gpout_control=0x0c;uint8_t gpout_control_lenght=0x02;
 };
 void subscribeVelocityCommand(const geometry_msgs::TwistConstPtr msg);
-void subscribeLed1Command(const aimijia::LedConstPtr msg);
-void subscribeLed2Command(const aimijia::LedConstPtr msg);
-void subscribeDigitalOutputCommand(const aimijia::DigitalOutputConstPtr msg);
-void subscribeExternalPowerCommand(const aimijia::DigitalOutputConstPtr msg);
+void subscribeLed1Command(const aimibot::LedConstPtr msg);
+void subscribeLed2Command(const aimibot::LedConstPtr msg);
+void subscribeDigitalOutputCommand(const aimibot::DigitalOutputConstPtr msg);
+void subscribeExternalPowerCommand(const aimibot::DigitalOutputConstPtr msg);
 void subscribeResetOdometry(const std_msgs::EmptyConstPtr msg);
-void subscribeSoundCommand(const aimijia::SoundConstPtr msg);
-void subscribeMotorPower(const aimijia::MotorPowerConstPtr msg);
-void subscribeControllerInfoCommand(const aimijia::ControllerInfoConstPtr msg);
+void subscribeSoundCommand(const aimibot::SoundConstPtr msg);
+void subscribeMotorPower(const aimibot::MotorPowerConstPtr msg);
+void subscribeControllerInfoCommand(const aimibot::ControllerInfoConstPtr msg);
 
 
 #endif

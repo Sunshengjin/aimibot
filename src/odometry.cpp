@@ -1,4 +1,4 @@
-#include "../include/aimijia/odometry.hpp"
+#include "../include/aimibot/odometry.hpp"
 
 namespace Aimi {
 

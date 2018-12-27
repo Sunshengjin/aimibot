@@ -45,7 +45,7 @@
    </node>
 
   <node pkg="joy" type="joy_node" name="joystick"/>
-  <node pkg="aimijia" type="aimijia" name="aimijia" output="screen">
+  <node pkg="aimibot" type="aimibot" name="aimibot" output="screen">
     <param name="serial_port" value="/dev/ttyUSB0"/>
   </node>
   
@@ -56,7 +56,7 @@
   <!-- velocity commands multiplexer -->
   <node pkg="nodelet" type="nodelet" name="cmd_vel_mux" args="load yocs_cmd_vel_mux/CmdVelMuxNodelet mobile_base_nodelet_manager">
     <param name="yaml_cfg_file" value="$(find turtlebot_bringup)/param/mux.yaml"/>
-    <remap from="cmd_vel_mux/output" to="aimijia/commands/velocity"/>
+    <remap from="cmd_vel_mux/output" to="aimibot/commands/velocity"/>
   </node>
 
 

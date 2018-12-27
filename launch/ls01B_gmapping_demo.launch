@@ -63,5 +63,5 @@
     <remap from="scan" to="$(arg scan_topic)"/>
   </node>
 
-   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find aimijia)/rviz/navigation.rviz"/>
+   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find aimibot)/rviz/navigation.rviz"/>
 </launch>

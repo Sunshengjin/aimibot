@@ -9,8 +9,8 @@
    </node>
 
   <node pkg="joy" type="joy_node" name="joystick"/>
-  <node pkg="aimijia" type="aimijia" name="aimijia" output="screen">
+  <node pkg="aimibot" type="aimibot" name="aimibot" output="screen">
     <param name="serial_port" value="/dev/ttyUSB0"/>
-    <remap from="/aimijia/commands/velocity" to="/teleop_velocity_smoother/raw_cmd_vel"/>
+    <remap from="/aimibot/commands/velocity" to="/teleop_velocity_smoother/raw_cmd_vel"/>
   </node>
 </launch>

@@ -1,12 +1,10 @@
 /*
  * Author: Yu miao
  * Data:2018.9.17
-If there is a error about "cliff.h",no such file or diectory
-please run " catkin_make -DCATKIN_WHITELIST_PACKAGES="aimijia" " under workspace
 */
 #include <serial/serial.h>
 #include <iostream>
-#include "../include/aimijia/aimijia.hpp"
+#include "../include/aimibot/aimibot.hpp"
 #include <signal.h> 
 
 serial::Serial sp;
@@ -238,7 +236,7 @@ int main(int argc, char** argv)
     uint8_t temp_buffer[256];
     uint8_t buffer[256];
     uint8_t i =0;
-    odometry.init(nh,"aimijia");
+    odometry.init(nh,"aimibot");
     reset_odometry();
     bool head_init = false;
     
