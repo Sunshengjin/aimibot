@@ -1,13 +1,12 @@
 <launch>
-  <!-- turtlebot_teleop_key already has its own built in velocity smoother -->
-    <node pkg="aimibot" type="aimibot" name="aimibot" output="screen">
-    <param name="serial_port" value="/dev/ttyUSB0"/>
-    <remap from="/aimibot/commands/velocity" to="turtlebot_teleop_keyboard/cmd_vel"/>
-  </node>
-  
-  <node pkg="turtlebot_teleop" type="turtlebot_teleop_key" name="turtlebot_teleop_keyboard"  output="screen">
+  <node pkg="aimibot" type="aimibot_teleop_key" name="aimibot_teleop_keyboard"  output="screen">
     <param name="scale_linear" value="0.5" type="double"/>
     <param name="scale_angular" value="1.5" type="double"/>
-    <remap from="turtlebot_teleop_keyboard/cmd_vel" to="/aimibot/commands/velocity"/>
+    <remap from="aimibot_teleop_keyboard/cmd_vel" to="aimibot/commands/velocity"/>
   </node>
+  
+  <node pkg="aimibot" type="aimibot" name="aimibot" >
+    <param name="serial_port" value="/dev/ttyUSB0"/>
+  </node>
+  
 </launch>

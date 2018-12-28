@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   std_msgs
   serial
+  joy
   ecl_exceptions ecl_sigslots ecl_streams ecl_threads tf
         ecl_build
         ecl_mobile_robot
@@ -24,7 +25,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 find_package(Eigen3 REQUIRED)
-include_directories(${EIGEN3_INCLUDE_DIRS})
+include_directories(${EIGEN3_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -133,7 +134,7 @@ generate_messages(
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES aimibot
-  CATKIN_DEPENDS message_runtime roscpp std_msgs 
+  CATKIN_DEPENDS message_runtime roscpp std_msgs joy
   ecl_exceptions ecl_sigslots ecl_streams ecl_threads tf#  DEPENDS system_lib
         ecl_command_line
         ecl_converters
@@ -237,3 +238,27 @@ add_executable(qua src/qua.cpp )
 target_link_libraries(qua ${catkin_LIBRARIES})
 add_executable(move_demo src/move.cpp )
 target_link_libraries(move_demo ${catkin_LIBRARIES})
+
+
+add_executable(aimibot_teleop_joy src/aimibot_joy.cpp)
+target_link_libraries(aimibot_teleop_joy ${catkin_LIBRARIES})
+
+#############
+## Install ##
+#############
+
+## Mark executable scripts (Python etc.) for installation
+install(PROGRAMS
+  scripts/aimibot_teleop_key
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+## Mark executables and/or libraries for installation
+install(TARGETS aimibot_teleop_joy
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+## Mark all other useful stuff for installation
+install(DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
