@@ -2,12 +2,12 @@
     <arg name="inverted" default="false" />
     <node name="ls01B" pkg="ls01B" type="ls01B" output="screen">
 　　  <param name="scan_topic" value="scan"/>        
-　　  <param name="laser_link" value="laser"/>     #激光坐标
-    <param name="serial_port" value="/dev/ttyUSB0"/>  #雷达连接的串口
+　　  <param name="laser_link" value="base_laser_link"/>     #激光坐标
+    <param name="serial_port" value="/dev/ttyUSB1"/>  #雷达连接的串口
 
     <param name="inverted" value="$(arg inverted)"/>           # 如果0度方向在串口线的方向上设置为true 
     </node>
-    <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0.0 0.0 0.44 0.0 0.0 0.0 base_link laser 100"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0.0 0.0 0.44 0.0 0.0 0.0 base_link base_laser_link 100"/>
 <!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find ls01d)/launch/rviz.rviz"/>-->
 
 </launch>
