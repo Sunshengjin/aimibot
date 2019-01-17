@@ -197,6 +197,8 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "serial_port"); 
     //创建句柄（虽然后面没用到这个句柄，但如果不创建，运行时进程会出错）
     ros::NodeHandle nh;
+    ros::NodeHandle nh_p("~");
+
     Aimi::Odometry odometry;
     signal(SIGINT, shutdown);
     advertiseTopics(nh);
@@ -236,7 +238,7 @@ int main(int argc, char** argv)
     uint8_t temp_buffer[256];
     uint8_t buffer[256];
     uint8_t i =0;
-    odometry.init(nh,"aimibot");
+    odometry.init(nh,nh_p,"aimibot");
     reset_odometry();
     bool head_init = false;
     

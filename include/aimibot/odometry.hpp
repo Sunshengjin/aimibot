@@ -23,7 +23,7 @@ namespace Aimi {
 class Odometry {
 public:
   Odometry();
-  void init(ros::NodeHandle& nh, const std::string& name);
+  void init(ros::NodeHandle& nh,ros::NodeHandle& nh_p, const std::string& name);
   bool commandTimeout() const;
   void update(const ecl::LegacyPose2D<double> &pose_update, ecl::linear_algebra::Vector3d &pose_update_rates,
               double imu_heading, double imu_angular_velocity);

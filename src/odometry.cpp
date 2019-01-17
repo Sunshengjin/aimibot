@@ -13,25 +13,25 @@ Odometry::Odometry():
   publish_tf(true)
 {};
 
-void Odometry::init(ros::NodeHandle& nh, const std::string& name) {
+void Odometry::init(ros::NodeHandle& nh,ros::NodeHandle& nh_p, const std::string& name) {
   double timeout;
-  nh.param("cmd_vel_timeout", timeout, 0.6);
+  nh_p.param("cmd_vel_timeout", timeout, 0.6);
   cmd_vel_timeout.fromSec(timeout);
   ROS_INFO_STREAM("Aimibot : Velocity commands timeout: " << cmd_vel_timeout << " seconds [" << name << "].");
 
-  if (!nh.getParam("odom_frame", odom_frame)) {
+  if (!nh_p.getParam("odom_frame", odom_frame)) {
     ROS_WARN_STREAM("Aimibot : no param server setting for odom_frame, using default [" << odom_frame << "][" << name << "].");
   } else {
     ROS_INFO_STREAM("Aimibot : using odom_frame [" << odom_frame << "][" << name << "].");
   }
 
-  if (!nh.getParam("base_frame", base_frame)) {
+  if (!nh_p.getParam("base_frame", base_frame)) {
     ROS_WARN_STREAM("Aimibot : no param server setting for base_frame, using default [" << base_frame << "][" << name << "].");
   } else {
     ROS_INFO_STREAM("Aimibot : using base_frame [" << base_frame << "][" << name << "].");
   }
 
-  if (!nh.getParam("publish_tf", publish_tf)) {
+  if (!nh_p.getParam("publish_tf", publish_tf)) {
     ROS_WARN_STREAM("Aimibot : no param server setting for publish_tf, using default [" << publish_tf << "][" << name << "].");
   } else {
     if ( publish_tf ) {
@@ -41,7 +41,7 @@ void Odometry::init(ros::NodeHandle& nh, const std::string& name) {
     }
   }
 
-  if (!nh.getParam("use_imu_heading", use_imu_heading)) {
+  if (!nh_p.getParam("use_imu_heading", use_imu_heading)) {
     ROS_WARN_STREAM("Aimibot : no param server setting for use_imu_heading, using default [" << use_imu_heading << "][" << name << "].");
   } else {
     if ( use_imu_heading ) {
