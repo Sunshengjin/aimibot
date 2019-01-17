@@ -1,7 +1,11 @@
 <launch>
 
   <node pkg="aimibot" type="aimibot" name="aimibot" output="screen">
-    <param name="serial_port" value="/dev/ttyUSB0"/>
+    <param name="serial_port"     value="/dev/ttyUSB0"/>
+    <param name="odom_frame"      value="odom"/>
+    <param name="base_frame"      value="base_footprint"/>
+    <param name="use_imu_heading" value="true" />
+    <param name="publish_tf"      value="true" />
   </node>
 
 </launch>
