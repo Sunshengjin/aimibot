@@ -195,7 +195,7 @@ void rostopic_pub(CoreSensors_data coresensors_data_,
 
 void subscribeTopics(ros::NodeHandle& nh)
 {
-  velocity_command_subscriber = nh.subscribe<geometry_msgs::Twist>("/aimibot/commands/velocity", 10, &subscribeVelocityCommand);
+  velocity_command_subscriber = nh.subscribe<geometry_msgs::Twist>("/cmd_vel", 10, &subscribeVelocityCommand);
   led1_command_subscriber =  nh.subscribe<aimibot::Led>("/aimibot/commands/led_1", 10, &subscribeLed1Command);
   led2_command_subscriber =  nh.subscribe<aimibot::Led>("/aimibot/commands/led_2", 10, &subscribeLed2Command);
   digital_output_command_subscriber =  nh.subscribe<aimibot::DigitalOutput>("/aimibot/commands/digi_output", 10, &subscribeDigitalOutputCommand);
